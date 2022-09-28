@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <% const row = (id, tasa, email, index) => { %>
+        <form action="/save" method="post">
+            <tr>
+                <td><%= id %></td>
+                <td><input name="tasa" type="number" value="<%= tasa %>"></td>
+                <td><input name="email" type="text" value="<%= email %>"></td>
+                <td><button type="submit" onclick="">save</button></td>
+                <input hidden name="index" type="number" value="<%= index %>">
+                <input hidden name="id" type="text" value="<%= id %>">
+            </tr> 
+        </form>
+        <% } %>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Contenido</h1>
+        <table>
+            <tr>
+                <td><%= data.values[0][0] %></td>
+                <td><%= data.values[0][1] %></td>
+                <td><%= data.values[0][2] %></td>
+            </tr>  
+            <% for (var i = 1; i < data.values.length; i++) { %>
+                <%= row(data.values[i][0], data.values[i][1], data.values[i][2], i+1); %>
+            <% } %>
+        </table>
+    </body>
+
+    <form action="/logout" method = "get">
+        <button>Logout</button>
+    </form>
+</html>
